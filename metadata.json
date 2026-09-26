@@ -1,0 +1,6 @@
+{
+  "name": "VLE Player পেমেন্ট ও সাবস্ক্রিপশন",
+  "description": "VLE Player-এর অফিসিয়াল সাবস্ক্রিপশন প্ল্যান নির্বাচন ও নিরাপদ পেমেন্ট পোর্টাল।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

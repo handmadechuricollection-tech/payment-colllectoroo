@@ -1,0 +1,364 @@
+{
+  "admin_users": [
+    {
+      "id": "7ab993f3-8d21-4f64-b0d3-e797b5a2b4db",
+      "username": "admin",
+      "email": "admin@vleplayer.com",
+      "password_hash": "924176bf9fbcf81683bf89f73fb2bb2060c8f217d3d27dfd7961524c367f0cd072e4383e61073327788378fcfda2d8714399c08dc0574f2d38646c5a39a02421",
+      "salt": "e383595b29aea874d6f97d19f36c9af0",
+      "role": "super_admin",
+      "created_at": "2026-09-26T12:48:59.919Z",
+      "updated_at": "2026-09-26T12:48:59.919Z"
+    }
+  ],
+  "plans": [
+    {
+      "id": "plan_7d",
+      "name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "duration_label": "৭ দিন",
+      "price_bdt": 30,
+      "description": "অল্প সময়ের জন্য ট্রায়াল বা দ্রুত অ্যাক্সেসের সেরা প্ল্যান",
+      "features": [
+        "হাই-স্পিড ভিডিও স্ট্রিমিং",
+        "ফুল এইচডি (1080p) প্লেব্যাক",
+        "সিঙ্গেল ডিভাইস সাপোর্ট",
+        "২৪/৭ কাস্টমার সাপোর্ট"
+      ],
+      "is_active": true,
+      "sort_order": 1,
+      "is_popular": false,
+      "created_at": "2026-09-26T12:48:59.919Z",
+      "updated_at": "2026-09-26T12:48:59.919Z"
+    },
+    {
+      "id": "plan_15d",
+      "name": "১৫ দিন রেগুলার",
+      "duration_days": 15,
+      "duration_label": "১৫ দিন",
+      "price_bdt": 49,
+      "description": "পাক্ষিক সাবস্ক্রিপশন, নিয়মিত ভিউয়ারদের জন্য উপযুক্ত",
+      "features": [
+        "হাই-স্পিড বাফারিং-মুক্ত স্ট্রিমিং",
+        "ফুল এইচডি ও অরিজিনাল সাউন্ড",
+        "সিঙ্গেল ডিভাইস সাপোর্ট",
+        "তাৎক্ষণিক অ্যাকাউন্ট অ্যাক্টিভেশন"
+      ],
+      "is_active": true,
+      "sort_order": 2,
+      "is_popular": false,
+      "created_at": "2026-09-26T12:48:59.919Z",
+      "updated_at": "2026-09-26T12:48:59.919Z"
+    },
+    {
+      "id": "plan_30d",
+      "name": "৩০ দিন মান্থলি",
+      "duration_days": 30,
+      "duration_label": "৩০ দিন",
+      "price_bdt": 80,
+      "description": "মাসিক সেরা ভ্যালু প্ল্যান, সবচেয়ে জনপ্রিয় প্যাকেজ",
+      "features": [
+        "আল্ট্রা এইচডি (4K/1080p) সাপোর্ট",
+        "সীমাহীন স্ট্রিমিং ও প্লেলিস্ট",
+        "মাল্টিপল ফরম্যাট সাপোর্ট (HLS/DASH)",
+        "অগ্রাধিকার গ্রাহক সহায়তা"
+      ],
+      "is_active": true,
+      "sort_order": 3,
+      "is_popular": true,
+      "created_at": "2026-09-26T12:48:59.919Z",
+      "updated_at": "2026-09-26T12:48:59.919Z"
+    },
+    {
+      "id": "plan_6m",
+      "name": "৬ মাস প্রিমিয়াম",
+      "duration_days": 180,
+      "duration_label": "৬ মাস",
+      "price_bdt": 280,
+      "description": "অর্ধবার্ষিক প্রিমিয়াম সেভার প্যাক, বাড়তি সাশ্রয়",
+      "features": [
+        "সর্বোচ্চ গতি ও নো-বাফারিং গ্যারান্টি",
+        "৪কে আল্ট্রা এইচডি ও ডলবি অডিও",
+        "যেকোনো ডিভাইসে সিমলেস সুইচিং",
+        "ভিআইপি কাস্টমার সাপোর্ট"
+      ],
+      "is_active": true,
+      "sort_order": 4,
+      "is_popular": false,
+      "created_at": "2026-09-26T12:48:59.919Z",
+      "updated_at": "2026-09-26T12:48:59.919Z"
+    },
+    {
+      "id": "plan_1y",
+      "name": "১ বছর / ৩৫৬ দিন আল্টিমেট",
+      "duration_days": 356,
+      "duration_label": "১ বছর (৩৫৬ দিন)",
+      "price_bdt": 499,
+      "description": "সারা বছরের জন্য নিশ্চিন্ত সম্পূর্ণ ভিআইপি সাবস্ক্রিপশন",
+      "features": [
+        "৩৫৬ দিন ফুল ভিআইপি এক্সেস",
+        "সর্বোচ্চ সাশ্রয়ী প্ল্যান",
+        "আনলিমিটেড ব্যান্ডউইথ ও হাই-রেজুলেশন",
+        "প্রাইমারি প্রোভিশনিং ও ডেডিকেটেড সাপোর্ট"
+      ],
+      "is_active": true,
+      "sort_order": 5,
+      "is_popular": true,
+      "created_at": "2026-09-26T12:48:59.919Z",
+      "updated_at": "2026-09-26T12:48:59.919Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "VLE-2026-26524",
+      "order_uuid": "9816848b-453e-4535-bf92-fd09b28ea667",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "amount_bdt": 30,
+      "customer_name": "টেস্ট ইউজার",
+      "customer_contact": "01711223344",
+      "status": "pending",
+      "payment_status": "pending",
+      "created_at": "2026-09-26T12:53:55.354Z",
+      "updated_at": "2026-09-26T12:53:55.354Z"
+    },
+    {
+      "id": "VLE-2026-92120",
+      "order_uuid": "6f1775ff-fd3e-4b23-ba1c-7f76be6f6aba",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "amount_bdt": 30,
+      "customer_name": "78227",
+      "customer_contact": "0154692727",
+      "preferred_username": "278217528",
+      "status": "paid",
+      "payment_status": "paid",
+      "created_at": "2026-09-26T12:58:31.055Z",
+      "updated_at": "2026-09-26T13:00:16.354Z",
+      "payment_id": "DEMO_TEST_99",
+      "payment_method": "BKASH"
+    },
+    {
+      "id": "VLE-2026-75992",
+      "order_uuid": "f33cfb44-f258-4ab3-bb11-56675e2ffba3",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "amount_bdt": 30,
+      "customer_name": "টেস্ট গ্রাহক",
+      "customer_contact": "01799887766",
+      "status": "paid",
+      "payment_status": "paid",
+      "created_at": "2026-09-26T13:02:01.220Z",
+      "updated_at": "2026-09-26T13:02:09.789Z",
+      "payment_id": "BK13488221",
+      "payment_method": "BKASH"
+    },
+    {
+      "id": "VLE-2026-55360",
+      "order_uuid": "4a91e731-76b8-4c68-a18a-fa4d16b54e81",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "amount_bdt": 30,
+      "customer_name": "sabbit",
+      "customer_contact": "ahguifda",
+      "preferred_username": "afcvaefvaev",
+      "status": "pending",
+      "payment_status": "pending",
+      "created_at": "2026-09-26T13:16:39.344Z",
+      "updated_at": "2026-09-26T13:16:39.344Z"
+    },
+    {
+      "id": "VLE-2026-52139",
+      "order_uuid": "bdf7f34c-50dc-4cb6-9101-babae35ed441",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "amount_bdt": 30,
+      "customer_name": "sabbit",
+      "customer_contact": "ahguifda",
+      "preferred_username": "afcvaefvaev",
+      "status": "pending",
+      "payment_status": "pending",
+      "created_at": "2026-09-26T13:17:46.041Z",
+      "updated_at": "2026-09-26T13:17:46.041Z"
+    },
+    {
+      "id": "VLE-2026-72848",
+      "order_uuid": "f11b79b8-23b7-4332-930e-3dd34aa73b73",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "amount_bdt": 30,
+      "customer_name": "sabbit",
+      "customer_contact": "013417230656",
+      "preferred_username": "afcvaefvaev",
+      "status": "paid",
+      "payment_status": "paid",
+      "created_at": "2026-09-26T13:18:24.928Z",
+      "updated_at": "2026-09-26T13:24:31.915Z",
+      "payment_id": "abc123XYZ",
+      "payment_method": "BKASH"
+    }
+  ],
+  "payments": [
+    {
+      "order_id": "VLE-2026-92120",
+      "order_uuid": "6f1775ff-fd3e-4b23-ba1c-7f76be6f6aba",
+      "gateway_transaction_id": "DEMO_TEST_99",
+      "amount_bdt": 30,
+      "currency": "BDT",
+      "gateway_name": "BKASH",
+      "payment_status": "PAID",
+      "raw_payload": {
+        "id": "148396ab-edc9-42d6-afdf-b87dfad609bd",
+        "trx_id": "DEMO_TEST_99",
+        "amount": 30,
+        "sender": "01711000000",
+        "gateway": "BKASH",
+        "raw_message": "Demo test SMS",
+        "status": "pending",
+        "device_id": null,
+        "created_at": "2026-09-26T13:00:10.385143+00:00"
+      },
+      "id": "PAY-1790427616354-3375",
+      "created_at": "2026-09-26T13:00:16.354Z",
+      "updated_at": "2026-09-26T13:00:16.354Z"
+    },
+    {
+      "order_id": "VLE-2026-75992",
+      "order_uuid": "f33cfb44-f258-4ab3-bb11-56675e2ffba3",
+      "gateway_transaction_id": "BK13488221",
+      "amount_bdt": 30,
+      "currency": "BDT",
+      "gateway_name": "BKASH",
+      "payment_status": "PAID",
+      "raw_payload": {
+        "id": "3683aee1-4f20-4d93-8574-741bc0fe8444",
+        "trx_id": "BK13488221",
+        "amount": 30,
+        "sender": "01799887766",
+        "gateway": "BKASH",
+        "raw_message": "You have received Tk 30.00 from 01799887766. TrxID BK13488221",
+        "status": "pending",
+        "device_id": null,
+        "created_at": "2026-09-26T13:02:06.297581+00:00"
+      },
+      "id": "PAY-1790427729789-4322",
+      "created_at": "2026-09-26T13:02:09.789Z",
+      "updated_at": "2026-09-26T13:02:09.789Z"
+    },
+    {
+      "order_id": "VLE-2026-72848",
+      "order_uuid": "f11b79b8-23b7-4332-930e-3dd34aa73b73",
+      "gateway_transaction_id": "abc123XYZ",
+      "amount_bdt": 30,
+      "currency": "BDT",
+      "gateway_name": "BKASH",
+      "payment_status": "PAID",
+      "raw_payload": {
+        "id": "3867f0bf-7371-4816-94c0-7d2c841a8feb",
+        "trx_id": "abc123XYZ",
+        "amount": 30,
+        "sender": null,
+        "gateway": "BKASH",
+        "raw_message": null,
+        "status": "pending",
+        "device_id": null,
+        "created_at": "2026-09-26T13:22:35.148404+00:00"
+      },
+      "id": "PAY-1790429071916-7276",
+      "created_at": "2026-09-26T13:24:31.916Z",
+      "updated_at": "2026-09-26T13:24:31.916Z"
+    }
+  ],
+  "account_provisioning": [
+    {
+      "order_id": "VLE-2026-92120",
+      "order_uuid": "VLE-2026-92120",
+      "customer_name": "78227",
+      "username": "278217528",
+      "password_preview": "rh423%F4jumC",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "account_status": "account_created",
+      "retry_count": 0,
+      "subscription_start": "2026-09-26T13:00:16.355Z",
+      "subscription_end": "2026-10-03T13:00:16.355Z",
+      "id": "PROV-1790427616355-17jud",
+      "created_at": "2026-09-26T13:00:16.355Z",
+      "updated_at": "2026-09-26T13:00:16.355Z",
+      "vle_response": {
+        "mode": "standalone_provisioning",
+        "note": "Internal account credentials generated. Ready for VLE Player activation.",
+        "provisioned_at": "2026-09-26T13:00:16.355Z"
+      }
+    },
+    {
+      "order_id": "VLE-2026-75992",
+      "order_uuid": "VLE-2026-75992",
+      "customer_name": "টেস্ট গ্রাহক",
+      "username": "vle_user_1131",
+      "password_preview": "%gy$vL2LeaKE",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "account_status": "account_created",
+      "retry_count": 0,
+      "subscription_start": "2026-09-26T13:02:09.790Z",
+      "subscription_end": "2026-10-03T13:02:09.790Z",
+      "id": "PROV-1790427729790-ck8nu",
+      "created_at": "2026-09-26T13:02:09.790Z",
+      "updated_at": "2026-09-26T13:02:09.791Z",
+      "vle_response": {
+        "mode": "standalone_provisioning",
+        "note": "Internal account credentials generated. Ready for VLE Player activation.",
+        "provisioned_at": "2026-09-26T13:02:09.790Z"
+      }
+    },
+    {
+      "order_id": "VLE-2026-72848",
+      "order_uuid": "VLE-2026-72848",
+      "customer_name": "sabbit",
+      "username": "afcvaefvaev",
+      "password_preview": "XsFqzhuyAY@A",
+      "plan_id": "plan_7d",
+      "plan_name": "৭ দিন আনলিমিটেড",
+      "duration_days": 7,
+      "account_status": "account_created",
+      "retry_count": 0,
+      "subscription_start": "2026-09-26T13:24:31.917Z",
+      "subscription_end": "2026-10-03T13:24:31.917Z",
+      "id": "PROV-1790429071917-n9zwo",
+      "created_at": "2026-09-26T13:24:31.917Z",
+      "updated_at": "2026-09-26T13:24:31.917Z",
+      "vle_response": {
+        "mode": "standalone_provisioning",
+        "note": "Internal account credentials generated. Ready for VLE Player activation.",
+        "provisioned_at": "2026-09-26T13:24:31.917Z"
+      }
+    }
+  ],
+  "admin_notes": [],
+  "site_settings": {
+    "site_name": "VLE Player - অফিসিয়াল পেমেন্ট পোর্টাল",
+    "support_phone": "+880 1700-000000",
+    "support_whatsapp": "+880 1700-000000",
+    "support_email": "support@vleplayer.com",
+    "vle_player_url": "https://vleplayer.com/login",
+    "payment_mode": "live",
+    "bkash_number": "01923361996",
+    "nagad_number": "01341723065",
+    "rocket_number": "01341723065",
+    "payment_instructions_bn": "পেমেন্ট সম্পন্ন করার পর কয়েক সেকেন্ডের মধ্যে স্বয়ংক্রিয়ভাবে আপনার অ্যাকাউন্ট ও লগইন তথ্য প্রস্তুত হবে।",
+    "vle_api_url": "",
+    "vle_api_secret_configured": false,
+    "webhook_secret_configured": false,
+    "gateway_key_configured": false
+  },
+  "webhook_events": []
+}
