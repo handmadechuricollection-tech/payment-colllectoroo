@@ -135,7 +135,8 @@ export interface DatabaseSchema {
   webhook_events: WebhookEvent[];
 }
 
-const DB_DIR = path.resolve(process.cwd(), 'data');
+const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const DB_DIR = isVercel ? '/tmp/data' : path.resolve(process.cwd(), 'data');
 const DB_FILE = path.resolve(DB_DIR, 'vle_database.json');
 
 function hashPassword(password: string, salt: string): string {
@@ -285,18 +286,31 @@ function getInitialData(): DatabaseSchema {
 }
 
 class Database {
-  private data: DatabaseSchema;
+  private data: DatabaseSchema = getInitialData();
 
   constructor() {
-    if (!fs.existsSync(DB_DIR)) {
-      fs.mkdirSync(DB_DIR, { recursive: true });
+    try {
+      if (!fs.existsSync(DB_DIR)) {
+        fs.mkdirSync(DB_DIR, { recursive: true });
+      }
+    } catch (e) {
+      console.warn('Could not create DB_DIR:', e);
     }
 
-    if (fs.existsSync(DB_FILE)) {
-      try {
-        const raw = fs.readFileSync(DB_FILE, 'utf-8');
+    let loaded = false;
+    try {
+      let raw: string | null = null;
+      if (fs.existsSync(DB_FILE)) {
+        raw = fs.readFileSync(DB_FILE, 'utf-8');
+      } else {
+        const rootDb = path.resolve(process.cwd(), 'data', 'vle_database.json');
+        if (fs.existsSync(rootDb)) {
+          raw = fs.readFileSync(rootDb, 'utf-8');
+        }
+      }
+
+      if (raw) {
         this.data = JSON.parse(raw);
-        // Ensure all arrays exist
         if (!this.data.admin_users) this.data.admin_users = [];
         if (!this.data.plans) this.data.plans = [];
         if (!this.data.orders) this.data.orders = [];
@@ -305,12 +319,13 @@ class Database {
         if (!this.data.admin_notes) this.data.admin_notes = [];
         if (!this.data.webhook_events) this.data.webhook_events = [];
         if (!this.data.site_settings) this.data.site_settings = getInitialData().site_settings;
-      } catch (err) {
-        console.error('Error reading db file, re-initializing', err);
-        this.data = getInitialData();
-        this.save();
+        loaded = true;
       }
-    } else {
+    } catch (err) {
+      console.warn('Error reading db file, falling back to initial data:', err);
+    }
+
+    if (!loaded) {
       this.data = getInitialData();
       this.save();
     }
@@ -318,11 +333,14 @@ class Database {
 
   private save() {
     try {
+      if (!fs.existsSync(DB_DIR)) {
+        fs.mkdirSync(DB_DIR, { recursive: true });
+      }
       const tempPath = `${DB_FILE}.tmp.${Date.now()}`;
       fs.writeFileSync(tempPath, JSON.stringify(this.data, null, 2), 'utf-8');
       fs.renameSync(tempPath, DB_FILE);
     } catch (e) {
-      console.error('DB save error:', e);
+      console.warn('DB save warning (non-fatal):', e);
     }
   }
 

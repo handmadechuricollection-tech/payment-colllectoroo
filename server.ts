@@ -35,6 +35,19 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 
+// Normalize URL for Vercel Serverless Function rewrites if /api prefix is stripped
+app.use((req, _res, next) => {
+  if (
+    !req.url.startsWith('/api') &&
+    ['/plans', '/settings', '/order', '/payment', '/admin', '/status', '/track'].some((prefix) =>
+      req.url.startsWith(prefix)
+    )
+  ) {
+    req.url = '/api' + (req.url.startsWith('/') ? req.url : '/' + req.url);
+  }
+  next();
+});
+
 // ==========================================
 // 1. PUBLIC API ROUTES
 // ==========================================
@@ -66,6 +79,7 @@ app.get('/api/settings/public', (_req: Request, res: Response) => {
         bkash_number: settings.bkash_number || '01700-000000',
         nagad_number: settings.nagad_number || '01700-000000',
         rocket_number: settings.rocket_number || '01700-000000',
+        telegram_support_link: settings.telegram_support_link || 'https://t.me/admin_support',
       },
     });
   } catch (err: any) {
@@ -844,4 +858,8 @@ async function startServer() {
   });
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
+
+export default app;

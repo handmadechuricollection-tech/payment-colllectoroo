@@ -34,16 +34,133 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
   return data;
 }
 
+const DEFAULT_FALLBACK_PLANS: Plan[] = [
+  {
+    id: 'plan_7d',
+    name: '৭ দিন আনলিমিটেড',
+    duration_days: 7,
+    duration_label: '৭ দিন',
+    price_bdt: 30,
+    description: 'অল্প সময়ের জন্য ট্রায়াল বা দ্রুত অ্যাক্সেসের সেরা প্ল্যান',
+    features: [
+      'হাই-স্পিড ভিডিও স্ট্রিমিং',
+      'ফুল এইচডি (1080p) প্লেব্যাক',
+      'সিঙ্গেল ডিভাইস সাপোর্ট',
+      '২৪/৭ কাস্টমার সাপোর্ট',
+    ],
+    is_active: true,
+    sort_order: 1,
+    is_popular: false,
+  },
+  {
+    id: 'plan_15d',
+    name: '১৫ দিন স্পেশাল',
+    duration_days: 15,
+    duration_label: '১৫ দিন',
+    price_bdt: 50,
+    description: 'পাক্ষিক সেরা প্যাকেজ, বাজেট ফ্রেন্ডলি সাবস্ক্রিপশন',
+    features: [
+      'হাই-স্পিড বাফারিং-মুক্ত স্ট্রিমিং',
+      'ফুল এইচডি ও অরিজিনাল সাউন্ড',
+      'সিঙ্গেল ডিভাইস সাপোর্ট',
+      'তাৎক্ষণিক অ্যাকাউন্ট অ্যাক্টিভেশন',
+    ],
+    is_active: true,
+    sort_order: 2,
+    is_popular: false,
+  },
+  {
+    id: 'plan_30d',
+    name: '৩০ দিন মান্থলি',
+    duration_days: 30,
+    duration_label: '৩০ দিন',
+    price_bdt: 80,
+    description: 'মাসিক সেরা ভ্যালু প্ল্যান, সবচেয়ে জনপ্রিয় প্যাকেজ',
+    features: [
+      'আল্ট্রা এইচডি (4K/1080p) সাপোর্ট',
+      'সীমাহীন স্ট্রিমিং ও প্লেলিস্ট',
+      'মাল্টিপল ফরম্যাট সাপোর্ট (HLS/DASH)',
+      'অগ্রাধিকার গ্রাহক সহায়তা',
+    ],
+    is_active: true,
+    sort_order: 3,
+    is_popular: true,
+  },
+  {
+    id: 'plan_6m',
+    name: '৬ মাস প্রিমিয়াম',
+    duration_days: 180,
+    duration_label: '৬ মাস',
+    price_bdt: 280,
+    description: 'অর্ধবার্ষিক প্রিমিয়াম সেভার প্যাক, বাড়তি সাশ্রয়',
+    features: [
+      'সর্বোচ্চ গতি ও নো-বাফারিং গ্যারান্টি',
+      '৪কে আল্ট্রা এইচডি ও ডলবি অডিও',
+      'যেকোনো ডিভাইসে সিমলেস সুইচিং',
+      'ভিআইপি কাস্টমার সাপোর্ট',
+    ],
+    is_active: true,
+    sort_order: 4,
+    is_popular: false,
+  },
+  {
+    id: 'plan_1y',
+    name: '১ বছর / ৩৫৬ দিন আল্টিমেট',
+    duration_days: 356,
+    duration_label: '১ বছর (৩৫৬ দিন)',
+    price_bdt: 499,
+    description: 'সারা বছরের জন্য নিশ্চিন্ত সম্পূর্ণ ভিআইপি সাবস্ক্রিপশন',
+    features: [
+      '৩৫৬ দিন ফুল ভিআইপি এক্সেস',
+      'সর্বোচ্চ সাশ্রয়ী প্ল্যান',
+      'আনলিমিটেড ব্যান্ডউইথ ও হাই-রেজুলেশন',
+      '২৪/৭ ডেডিকেটেড ভিআইপি সাপোর্ট',
+    ],
+    is_active: true,
+    sort_order: 5,
+    is_popular: true,
+  },
+];
+
+const DEFAULT_FALLBACK_SETTINGS: SiteSettings = {
+  site_name: 'VLE Player - অফিসিয়াল পেমেন্ট পোর্টাল',
+  support_phone: '+880 1700-000000',
+  support_whatsapp: '+880 1700-000000',
+  support_email: 'support@vleplayer.com',
+  vle_player_url: 'https://vleplayer.com/login',
+  telegram_support_link: 'https://t.me/admin_support',
+  payment_mode: 'live',
+  active_gateway: 'bkash',
+  bkash_number: '01923361996',
+  nagad_number: '01341723065',
+  rocket_number: '01341723065',
+  payment_instructions_bn: 'পেমেন্ট সম্পন্ন করার পর কয়েক সেকেন্ডের মধ্যে স্বয়ংক্রিয়ভাবে আপনার অ্যাকাউন্ট ও লগইন তথ্য প্রস্তুত হবে।',
+  vle_api_url: '',
+};
+
 export const api = {
   // Public
   getPlans: async (): Promise<Plan[]> => {
-    const res = await request<{ success: boolean; plans: Plan[] }>('/api/plans');
-    return res.plans;
+    try {
+      const res = await request<{ success: boolean; plans: Plan[] }>('/api/plans');
+      if (res && res.plans && res.plans.length > 0) {
+        return res.plans;
+      }
+      return DEFAULT_FALLBACK_PLANS;
+    } catch (err) {
+      console.warn('[API] Could not fetch plans from server, using default plans:', err);
+      return DEFAULT_FALLBACK_PLANS;
+    }
   },
 
   getPublicSettings: async (): Promise<SiteSettings> => {
-    const res = await request<{ success: boolean; settings: SiteSettings }>('/api/settings/public');
-    return res.settings;
+    try {
+      const res = await request<{ success: boolean; settings: SiteSettings }>('/api/settings/public');
+      return res.settings || DEFAULT_FALLBACK_SETTINGS;
+    } catch (err) {
+      console.warn('[API] Could not fetch settings from server, using default settings:', err);
+      return DEFAULT_FALLBACK_SETTINGS;
+    }
   },
 
   createOrder: async (data: {
